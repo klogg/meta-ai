@@ -1,0 +1,16 @@
+DESCRIPTION = "Correct, reproducible, and fast builds for everyone."
+HOMEPAGE = "https://bazel.build/"
+LICENSE = "Apache-2.0"
+
+SRC_URI_PREFIX = "https://github.com/bazelbuild/bazel/releases/download"
+
+SUBDIR="bazel-${PV}"
+S = "${WORKDIR}/${SUBDIR}"
+
+bazel_compile() {
+	export CC=${BUILD_CC}
+	${S}/compile.sh
+}
+
+bazel_install() {
+}
