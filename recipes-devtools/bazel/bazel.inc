@@ -13,4 +13,5 @@ bazel_compile() {
 }
 
 bazel_install() {
+	install -d "${D}${bindir}"
 }
