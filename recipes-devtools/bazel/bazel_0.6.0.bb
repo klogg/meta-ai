@@ -1,11 +1,11 @@
 require bazel_${PV}.inc
 
 do_compile() {
-  basel_compile
+  bazel_compile
 }
 
 do_install() {
-  basel_install
+  bazel_install
 }
 
 BBCLASSEXTEND = "native nativesdk"
