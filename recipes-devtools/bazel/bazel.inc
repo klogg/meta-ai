@@ -17,7 +17,6 @@ bazel_compile() {
 }
 
 bazel_install() {
-	install -d "${D}${bindir}"
+	cp ${S}/output/bazel ${S}
+	install -d ${D}${bindir}/
 }
-
-FILES_${PN} = "${bindir}"
