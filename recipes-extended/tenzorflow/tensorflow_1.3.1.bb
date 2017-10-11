@@ -1,4 +1,4 @@
-require tensorflow-${PV}.inc
+require tensorflow_${PV}.inc
 
 do_configure () {
 	tensorflow_configure
