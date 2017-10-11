@@ -6,13 +6,14 @@ DEPENDS ="bazel python python-pip python-numpy python-six"
 
 SRC_URI = "git://github.com/tensorflow/tensorflow;protocol=https"
 
-SUBDIR="tensorflow-${PV}"
-S = "${WORKDIR}/${SUBDIR}"
+S = "${WORKDIR}/git"
 
 tensorflow_configure() {
+	${S}/configure
 }
 
 tensorflow_compile() {
+	bazel build
 }
 
 tensorflow_install() {
