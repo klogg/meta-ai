@@ -9,6 +9,8 @@ SRC_URI_PREFIX = "https://github.com/bazelbuild/bazel/releases/download"
 SUBDIR="bazel-${PV}"
 S = "${WORKDIR}/${SUBDIR}"
 
+inherit native
+
 bazel_compile() {
 	export CC=${BUILD_CC}
 	${S}/compile.sh

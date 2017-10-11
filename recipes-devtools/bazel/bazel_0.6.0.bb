@@ -7,5 +7,3 @@ do_compile() {
 do_install() {
   bazel_install
 }
-
-BBCLASSEXTEND = "native nativesdk"
