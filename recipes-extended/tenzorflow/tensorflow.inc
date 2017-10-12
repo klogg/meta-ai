@@ -8,27 +8,21 @@ RDEPENDS_tensorflow = "python-pip python-numpy python-six"
 SRC_URI = "git://github.com/tensorflow/tensorflow;protocol=https"
 
 PV = "${TENSORFLOW_VERSION}-git${SRCPV}"
-
 S = "${WORKDIR}/git"
 
-# Move this to bazel.bbclass
-inherit java
-JDK_VER = "openjdk-8-native"
-export JAVA_HOME="${STAGING_DIR_NATIVE}${libdir_jvm}/${JDK_VER}"
-export CC="${TARGET_PREFIX}gcc"
-BAZEL_OPTS = "--crosstool_top=//tools/yocto_toolchain:toolchain --cpu=${DEFAULTTUNE}"
-# ^^^
+inherit bazel python-dir
 
 tensorflow_configure() {
 	# export CC_OPT_FLAGS="-march=armv8-a+simd"
 	# actually we need to do fakeroot using host build sysroot here
 	# also we need to redirect output ()
-	export
+	export PYTHON_BIN_PATH="${STAGING_BINDIR_NATIVE}/python-native/python"
+	export PYTHON_LIB_PATH="${STAGING_LIBDIR_NATIVE}/${PYTHON-DIR}"
 	${S}/configure
 }
 
 tensorflow_compile() {
-	bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package --verbose_failures
+	bazel build ${BAZEL_OPTS} --config=opt //tensorflow/tools/pip_package:build_pip_package --verbose_failures
 }
 
 tensorflow_install() {
