@@ -1,0 +1,81 @@
+package(default_visibility = ['//visibility:public'])
+
+filegroup(
+  name = 'gcc',
+  srcs = [
+    'bin/aarch64-poky-linux-gcc',
+  ],
+)
+
+filegroup(
+  name = 'ar',
+  srcs = [
+    'bin/aarch64-poky-linux-ar',
+  ],
+)
+
+filegroup(
+  name = 'ld',
+  srcs = [
+    'bin/aarch64-poky-linux-ld',
+  ],
+)
+
+filegroup(
+  name = 'nm',
+  srcs = [
+    'bin/aarch64-poky-linux-nm',
+  ],
+)
+
+filegroup(
+  name = 'objcopy',
+  srcs = [
+    'bin/aarch64-poky-linux-objcopy',
+  ],
+)
+
+filegroup(
+  name = 'objdump',
+  srcs = [
+    'bin/aarch64-poky-linux-objdump',
+  ],
+)
+
+filegroup(
+  name = 'strip',
+  srcs = [
+    'bin/aarch64-poky-linux-strip',
+  ],
+)
+
+filegroup(
+  name = 'as',
+  srcs = [
+    'bin/aarch64-poky-linux-as',
+  ],
+)
+
+filegroup(
+  name = 'compiler_pieces',
+  srcs = glob([
+    'aarch64-poky-linux/**',
+    'libexec/**',
+    'lib/gcc/aarch64-poky-linux/**',
+    'include/**',
+  ]),
+)
+
+filegroup(
+  name = 'compiler_components',
+  srcs = [
+    ':gcc',
+    ':ar',
+    ':ld',
+    ':nm',
+    ':objcopy',
+    ':objdump',
+    ':strip',
+    ':as',
+  ],
+)
