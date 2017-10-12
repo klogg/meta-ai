@@ -11,12 +11,15 @@ S = "${WORKDIR}/${SUBDIR}"
 
 inherit native
 
+INHIBIT_PACKAGE_STRIP = "1"
+INHIBIT_SYSROOT_STRIP = "1"
+
 bazel_compile() {
 	export CC=${BUILD_CC}
 	${S}/compile.sh
 }
 
 bazel_install() {
-	cp ${S}/output/bazel ${S}
 	install -d ${D}${bindir}/
+	install ${S}/output/bazel ${D}${bindir}
 }
