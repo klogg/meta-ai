@@ -15,7 +15,7 @@ default_toolchain {
 toolchain {
   abi_version: "aarch64"
   abi_libc_version: "aarch64"
-  builtin_sysroot: ""
+  builtin_sysroot: "/media/klogg/StoreJet/tmp/sysroots/xenaarch64"
   compiler: "compiler"
   host_system_name: "aarch64"
   needsPic: true
@@ -37,19 +37,19 @@ toolchain {
   tool_path { name: "gcc" path: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcc" }
   tool_path { name: "gcov" path: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gcov" }
   tool_path { name: "ld" path: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-ld" }
+
   tool_path { name: "nm" path: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-nm" }
   tool_path { name: "objcopy" path: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-objcopy" }
   tool_path { name: "objdump" path: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-objdump" }
   tool_path { name: "strip" path: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-strip" }
 
-  cxx_builtin_include_directory: "/media/klogg/StoreJet/tmp/sysroots/xenaarch64/usr/include/c++/6.2.1/"
-  cxx_builtin_include_directory: "/media/klogg/StoreJet/tmp/sysroots/xenaarch64/lib/gcc/aarch64-poky-linux/6.2.1/include"
+  cxx_builtin_include_directory: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/include"
+  cxx_builtin_include_directory: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/lib/aarch64-poky-linux/gcc/aarch64-poky-linux/6.2.1/include"
+  cxx_builtin_include_directory: "/media/klogg/StoreJet/tmp/sysroots/x86_64-linux/usr/lib/aarch64-poky-linux/gcc/aarch64-poky-linux/6.2.1/include-fixed"
   cxx_builtin_include_directory: "/media/klogg/StoreJet/tmp/sysroots/xenaarch64/usr/include"
-  cxx_builtin_include_directory: "/media/klogg/StoreJet/tmp/sysroots/xenaarch64/usr/local/include/"
+  cxx_builtin_include_directory: "/media/klogg/StoreJet/tmp/sysroots/xenaarch64/usr/lib/gcc/aarch64-poky-linux/6.2.1/include"
 
   cxx_flag: "-std=c++11"
-  cxx_flag: "-isystem"
-  cxx_flag: "/media/klogg/StoreJet/tmp/sysroots/xenaarch64/usr/include/"
   linker_flag: "-lstdc++"
 
   unfiltered_cxx_flag: "-Wno-builtin-macro-redefined"
@@ -63,6 +63,7 @@ toolchain {
   compiler_flag: "-U_FORTIFY_SOURCE"
   compiler_flag: "-D_FORTIFY_SOURCE=1"
   compiler_flag: "-fstack-protector"
+
   linker_flag: "-Wl,-z,relro,-z,now"
 
   linker_flag: "-no-canonical-prefixes"
