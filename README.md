@@ -3,3 +3,4 @@ Yocto metalayer for AI and machine learning
 
 Depends on
  meta-java
+ meta-python

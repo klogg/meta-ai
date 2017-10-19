@@ -13,14 +13,14 @@ S = "${WORKDIR}/git"
 inherit bazel setuptools
 
 tensorflow_configure() {
-	export CC_OPT_FLAGS="${TUNE_CCARGS}"
+	export CC_OPT_FLAGS="-march=armv8-a+simd ${TUNE_CCARGS}"
 	export PYTHON_BIN_PATH="${STAGING_BINDIR_NATIVE}/python-native/python"
 	export PYTHON_LIB_PATH="${STAGING_LIBDIR_NATIVE}/${PYTHON_DIR}"
 	${S}/configure
 }
 
 tensorflow_compile() {
-	bazel build ${BAZEL_OPTS} --config=opt //tensorflow/tools/pip_package:build_pip_package --verbose_failures
+	bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package --verbose_failures
 }
 
 tensorflow_install() {
